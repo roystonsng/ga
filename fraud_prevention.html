@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Prevention AI</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 20px;
+            color: #343a40;
+        }
+        .nav-item {
+            margin-right: 20px;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        .transaction-history, .risk-score {
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .ai-description {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .notification {
+            background-color: #ffc107;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        .btn {
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">MultiSecure AI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="digital_wallet.html">Digital Wallet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fraud_prevention.html">Fraud Prevention</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact_us.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" href="accounts.html">Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="section-title">Fraud Prevention AI</div>
+        <div class="ai-description">
+            <h4>AI-Powered Fraud Detection</h4>
+            <p>
+                Our system uses advanced machine learning algorithms to monitor transactions and detect fraudulent activities. 
+                It analyzes suspicious patterns and behaviors to identify anomalies, providing real-time notifications when 
+                suspicious activity is detected. This helps protect users from potential fraud and ensures the safety of their 
+                transactions.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="transaction-history">
+                    <h4>Transaction History</h4>
+                    <ul id="transactionList" class="list-unstyled">
+                        <li>$660 - Clothing Store</li>
+                        <li>$2127 - Fast Food</li>
+                        <li>$2804 - Online Furniture</li>
+                        <li>$4944 - Electronics Store</li>
+                        <li>$1885 - Coffee Shop</li>
+                    </ul>
+                    <button id="analyzeTransactions" class="btn btn-secondary">Analyze Transactions</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="risk-score">
+                    <h4>User Risk Score (%)</h4>
+                    <p id="riskScore">62% (low risk)</p>
+                    <button id="generateRiskScore" class="btn btn-primary">Generate Risk Score</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="notification" class="notification">
+            <strong>Alert:</strong> Suspicious activity detected in your recent transactions!
+        </div>
+
+        <div class="section-title">Historical Risk Scores</div>
+        <div class="chart-container">
+            <canvas id="riskScoreChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Historical risk scores data
+        let historicalScores = [5, 10, 8, 6, 7, 9, 4, 6, 5, 8];
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+        const ctx = document.getElementById('riskScoreChart').getContext('2d');
+        let riskScoreChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                    label: 'Risk Score (%)',
+                    data: historicalScores,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        type: 'category',
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    },
+                    y: {
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 10
+                        },
+                        title: {
+                            display: true,
+                            text: 'Risk Score (%)'
+                        }
+                    }
+                }
+            }
+        });
+
+        let transactions = [];
+
+        // Function to generate random transactions
+        function generateRandomTransactions() {
+            const transactionTypes = [
+                'Electronics Store', 'Coffee Shop', 'Online Furniture', 
+                'Grocery Store', 'Fast Food', 'Book Store', 'Clothing Store'
+            ];
+            transactions = [];
+            const transactionListElement = document.getElementById('transactionList');
+            transactionListElement.innerHTML = '';
+
+            for (let i = 0; i < 5; i++) {
+                const amount = Math.floor(Math.random() * 5000) + 1; // Random amount between 1 and 5000
+                const type = transactionTypes[Math.floor(Math.random() * transactionTypes.length)];
+                transactions.push({ amount, type });
+
+                // Add to the transaction list
+                const listItem = document.createElement('li');
+                listItem.textContent = `$${amount} - ${type}`;
+                transactionListElement.appendChild(listItem);
+            }
+        }
+
+        // Generate risk score based on transactions
+        function generateRiskScore() {
+            let totalSpent = 0;
+            transactions.forEach(transaction => totalSpent += transaction.amount);
+
+            // Simple risk calculation: higher spending means higher risk
+            const riskScore = Math.min(Math.floor(totalSpent / 200), 100); // Risk score capped at 100%
+            document.getElementById('riskScore').textContent = `${riskScore}% (low risk)`;
+
+            if (riskScore > 50) {
+                document.getElementById('notification').style.display = 'block';
+            } else {
+                document.getElementById('notification').style.display = 'none';
+            }
+
+            // Update the chart with the new risk score
+            historicalScores.push(riskScore);
+            if (historicalScores.length > 12) {
+                historicalScores.shift(); // Ensure we only keep the latest 12 scores
+            }
+            riskScoreChart.data.datasets[0].data = historicalScores;
+            riskScoreChart.update();
+        }
+
+        // Event listener for analyzing transactions
+        document.getElementById('analyzeTransactions').addEventListener('click', generateRandomTransactions);
+
+        // Event listener for generating risk score
+        document.getElementById('generateRiskScore').addEventListener('click', generateRiskScore);
+    </script>
+</body>
+</html>

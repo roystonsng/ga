@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .service-section {
+            text-align: center;
+            padding: 40px;
+        }
+        .service-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+        .service-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+        }
+        .service-description {
+            font-size: 16px;
+        }
+        .underline-title {
+            text-decoration: underline;
+            color: black;
+        }
+        .dash-line {
+            border-bottom: 3px dashed black;
+            margin: 20px 0;
+        }
+        .notification {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">MultiSecure AI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="digital_wallet.html">Digital Wallet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fraud_prevention.html">Fraud Prevention</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact_us.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" href="accounts.html">Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section class="service-section">
+            <h1 class="underline-title">Our Services</h1>
+            <div class="dash-line"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-icon">👁️</div>
+                    <div class="service-title">Real-Time Monitoring:</div>
+                    <div class="service-description">
+                        Continuous surveillance of transactions to prevent fraud
+                    </div>
+                    <button class="btn btn-primary mt-2" onclick="simulateRealTimeMonitoring()">Simulate</button>
+                    <div id="notification1" class="notification"></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-icon">📈</div>
+                    <div class="service-title">Behavioral Biometrics:</div>
+                    <div class="service-description">
+                        Analyzing user behavior to detect unusual anomalies
+                    </div>
+                    <button class="btn btn-primary mt-2" onclick="simulateBehavioralBiometrics()">Simulate</button>
+                    <div id="notification2" class="notification"></div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-icon">🔒</div>
+                    <div class="service-title">Biometric Authentication:</div>
+                    <div class="service-description">
+                        Using fingerprint and facial recognition for secure user authentication
+                    </div>
+                    <button class="btn btn-primary mt-2" onclick="simulateBiometricAuthentication()">Simulate</button>
+                    <div id="notification3" class="notification"></div>
+                </div>
+            </div>
+            <p class="mt-4">Steps to purchase will be provided in the digital wallet section</p>
+        </section>
+    </main>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function showNotification(elementId, message) {
+            const notificationElement = document.getElementById(elementId);
+            notificationElement.textContent = message;
+            notificationElement.style.display = 'block';
+        }
+
+        function simulateRealTimeMonitoring() {
+            showNotification("notification1", "Simulating real-time monitoring... Transaction activity monitored continuously.");
+        }
+
+        function simulateBehavioralBiometrics() {
+            showNotification("notification2", "Simulating behavioral biometrics... User behavior analysis in progress.");
+        }
+
+        function simulateBiometricAuthentication() {
+            showNotification("notification3", "Simulating biometric authentication... Attempting fingerprint and facial recognition.");
+        }
+    </script>
+</body>
+</html>

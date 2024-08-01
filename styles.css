@@ -1,0 +1,154 @@
+/* Reset and basic styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7; /* Light gray background */
+    color: #333;
+}
+
+header {
+    background-color: #111; /* Dark header background */
+    color: #fff; /* White text */
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a.logo {
+    background-color: #333; /* Dark logo background */
+}
+
+nav a.account {
+    background-color: #333; /* Dark account button background */
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover {
+    background-color: #555; /* Dark hover background */
+    color: #fff;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.intro {
+    margin-bottom: 40px;
+}
+
+.intro h1 {
+    font-size: 4rem; /* Large heading size */
+    color: #333;
+    font-weight: bold;
+    font-family: 'Arial Black', sans-serif; /* Bold and clear font */
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px; /* Limit intro text width */
+    margin: 0 auto 20px; /* Center and add margin */
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: center;
+    margin-top: 40px; /* Increased margin top */
+    padding: 40px 0;
+}
+
+.features h2 {
+    font-size: 3rem; /* Large heading size */
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.feature {
+    background-color: #fff;
+    padding: 30px;
+    border: 2px solid #8B4513; /* Brown border */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+    font-size: 2.5rem; /* Slightly larger heading size */
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.feature .card-body {
+    color: #555;
+}
+
+.feature ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feature ul li {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.feature a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.feature a:hover {
+    color: #0056b3;
+}
+
+footer {
+    background-color: #111; /* Dark footer background */
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.btn {
+    background-color: #555; /* Nike's iconic orange */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #cc3700; /* Darker orange on hover */
+}
+
+
+
+

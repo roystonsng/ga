@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Wallet</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="digitalwallet.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .section-title, .platform-title {
+            text-align: center;
+            font-weight: bold;
+        }
+        .section-title {
+            font-size: 36px;
+            text-decoration: underline;
+            margin-top: 20px;
+        }
+        .platform-title {
+            font-size: 28px;
+            margin-top: 10px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-icons img {
+            width: 100px;
+            height: 100px;
+            margin: 0 20px;
+            transition: transform 0.3s;
+        }
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        .card-title {
+            text-decoration: underline;
+            color: #6c757d;
+        }
+        .btn-outline-dark {
+            border-color: #6c757d;
+            color: #6c757d;
+        }
+        .btn-outline-dark:hover {
+            background-color: #6c757d;
+            color: #fff;
+        }
+        .form-group p, .alert p {
+            margin-bottom: 0;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        #notification, #withdrawalNotification {
+            display: none;
+        }
+        .pagination {
+            justify-content: center;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">MultiSecure AI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="digital_wallet.html">Digital Wallet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fraud_prevention.html">Fraud Prevention</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact_us.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" href="accounts.html">Account</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <!-- Topping Up Page -->
+        <section id="section1" class="section active">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h1 class="card-title text-center">Digital Wallet</h1>
+                    <form onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="amount" class="h5">1. Choose amount to top up</label>
+                            <input type="number" class="form-control text-center" id="amount" placeholder="$0.00" style="width: 200px; margin: 0 auto;">
+                        </div>
+                        <div class="form-group">
+                            <label class="h5">2. Select payment method</label>
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-outline-dark mx-2">Apple Pay</button>
+                                <button type="button" class="btn btn-outline-dark mx-2">Google Pay</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="h5">3. Press confirm to authorize the transaction and ensure all details are keyed in correctly</p>
+                            <button type="button" class="btn btn-outline-dark" onclick="confirmTransaction()">Confirm</button>
+                        </div>
+                    </form>
+                    <div id="balanceDisplay" class="alert alert-dark mt-4 text-center" style="width: 250px; margin: 0 auto;">
+                        New account balance: $30.00
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Payment Page -->
+        <section id="section2" class="section">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Make a Payment</h2>
+                    <form onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="service" class="h5">Select a service</label>
+                            <select class="form-control text-center" id="service" style="width: 300px; margin: 0 auto;" onchange="updateDeductAmount()">
+                                <option value="0">Select a service</option>
+                                <option value="30">Real-time Monitoring ($30)</option>
+                                <option value="50">Behavioral Biometrics ($50)</option>
+                                <option value="10">Biometric Authentication ($10)</option>
+                                <option value="80">Exclusive AI Fraud-Prevention Subscription 1 Month ($80)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p class="h5">Total amount to be deducted: <span id="deductAmount">$0.00</span></p>
+                            <button type="button" class="btn btn-outline-dark" onclick="deductAmount()">Deduct Amount</button>
+                        </div>
+                    </form>
+                    <div id="notification" class="alert alert-success mt-4 text-center" style="width: 300px; margin: 0 auto;">
+                        Amount deducted successfully. New balance: $<span id="newBalance">30.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Withdrawal Page -->
+        <section id="section3" class="section">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Withdrawal</h2>
+                    <form onsubmit="return false;">
+                        <div class="form-group">
+                            <label for="withdrawalAmount" class="h5">Enter amount to withdraw</label>
+                            <input type="number" class="form-control text-center" id="withdrawalAmount" placeholder="$0.00" style="width: 300px; margin: 0 auto;">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-outline-dark" onclick="processWithdrawal()">Withdraw</button>
+                        </div>
+                        <div id="withdrawalNotification" class="alert alert-success mt-4 text-center" style="width: 300px; margin: 0 auto;">
+                            Withdrawal successful. New balance: $<span id="withdrawalNewBalance">30.00</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#" onclick="showSection(1)">1</a></li>
+                <li class="page-item"><a class="page-link" href="#" onclick="showSection(2)">2</a></li>
+                <li class="page-item"><a class="page-link" href="#" onclick="showSection(3)">3</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <!-- JavaScript for handling transactions -->
+    <script>
+        let currentBalance = 30.00;
+
+        function confirmTransaction() {
+            const amountInput = document.getElementById('amount');
+            const amount = parseFloat(amountInput.value);
+
+            if (isNaN(amount) || amount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            currentBalance += amount;
+            document.getElementById('balanceDisplay').textContent = `New account balance: $${currentBalance.toFixed(2)}`;
+            amountInput.value = '';
+        }
+
+        function updateDeductAmount() {
+            const serviceSelect = document.getElementById('service');
+            const deductAmount = serviceSelect.value;
+            document.getElementById('deductAmount').textContent = `$${deductAmount}`;
+        }
+
+        function deductAmount() {
+            const deductAmount = parseFloat(document.getElementById('service').value);
+            if (isNaN(deductAmount) || deductAmount <= 0) {
+                alert("Please select a valid service.");
+                return;
+            }
+
+            if (currentBalance < deductAmount) {
+                alert("Insufficient balance.");
+                return;
+            }
+
+            currentBalance -= deductAmount;
+            document.getElementById('notification').style.display = 'block';
+            document.getElementById('newBalance').textContent = currentBalance.toFixed(2);
+            document.getElementById('balanceDisplay').textContent = `New account balance: $${currentBalance.toFixed(2)}`;
+        }
+
+        function processWithdrawal() {
+            const withdrawalAmount = parseFloat(document.getElementById('withdrawalAmount').value);
+            if (isNaN(withdrawalAmount) || withdrawalAmount <= 0) {
+                alert("Please enter a valid amount.");
+                return;
+            }
+
+            if (currentBalance < withdrawalAmount) {
+                alert("Insufficient balance.");
+                return;
+            }
+
+            currentBalance -= withdrawalAmount;
+            document.getElementById('withdrawalNotification').style.display = 'block';
+            document.getElementById('withdrawalNewBalance').textContent = currentBalance.toFixed(2);
+            document.getElementById('withdrawalAmount').value = '';
+        }
+
+        function showSection(sectionNumber) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(`section${sectionNumber}`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MultiSecure AI</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">MultiSecure AI</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="digital_wallet.html">Digital Wallet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fraud_prevention.html">Fraud Prevention</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact_us.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light" href="accounts.html">Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="logoutButton" class="nav-link btn btn-danger" style="display: none;">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <section class="text-center mb-5">
+            <h1 class="display-4">Welcome to MultiSecure AI</h1>
+            <p class="lead">Ensuring safer digital transfers</p>
+        </section>
+
+        <section>
+            <h2 class="text-center mb-4">Our Exclusive Features</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow">
+                        <div class="card-body">
+                            <h3 class="card-title">Real-time Monitoring</h3>
+                            <p class="text-danger">Real-time monitoring</p>
+                            <ul class="list-unstyled">
+                                <li>Continuous surveillance of all transactions</li>
+                                <li>Immediately flags suspicious activities</li>
+                                <li>Protects users by preventing fraudulent activities</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#realTimeMonitoringModal">More info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow">
+                        <div class="card-body">
+                            <h3 class="card-title">Biometric Authentication</h3>
+                            <p class="text-danger">Biometric authentication</p>
+                            <ul class="list-unstyled">
+                                <li>Unique biological characteristics (fingerprint, facial recognition)</li>
+                                <li>Only authorized users can perform sensitive transactions</li>
+                                <li>Reduce risk of compromised access</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#biometricAuthenticationModal">More info</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow">
+                        <div class="card-body">
+                            <h3 class="card-title">Behavioral Biometrics</h3>
+                            <p class="text-danger">Behavioral biometrics</p>
+                            <ul class="list-unstyled">
+                                <li>Analyzes pattern in user behavior (typing speed, device usage)</li>
+                                <li>Detect anomalies in behaviors that may indicate fraudulent activity</li>
+                                <li>Creates behavioral profile for each user</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer bg-white">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#behavioralBiometricsModal">More info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-3">
+        &copy; 2024 MultiSecure AI. All rights reserved.
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal fade" id="realTimeMonitoringModal" tabindex="-1" role="dialog" aria-labelledby="realTimeMonitoringModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="realTimeMonitoringModalLabel">Real-time Monitoring</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Real-time monitoring allows for continuous observation of all digital transactions. This system is designed to immediately identify and flag suspicious activities. By keeping a constant watch on transactions, it helps in proactively preventing fraudulent actions and ensuring the security of users' financial activities.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="biometricAuthenticationModal" tabindex="-1" role="dialog" aria-labelledby="biometricAuthenticationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="biometricAuthenticationModalLabel">Biometric Authentication</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Biometric authentication utilizes unique biological traits such as fingerprints and facial recognition to verify user identity. This method ensures that only authorized individuals can access sensitive features and perform critical transactions, significantly reducing the risk of unauthorized access and enhancing overall security.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="behavioralBiometricsModal" tabindex="-1" role="dialog" aria-labelledby="behavioralBiometricsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="behavioralBiometricsModalLabel">Behavioral Biometrics</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Behavioral biometrics analyzes users' patterns such as typing speed and device interactions to detect unusual activities. By establishing a behavioral profile for each user, this system identifies deviations from typical behavior that may indicate fraudulent actions, thus helping in preventing potential security breaches.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Check if the user is logged in and show the logout button
+        if (sessionStorage.getItem('loggedIn') === 'true') {
+            document.getElementById('logoutButton').style.display = 'block';
+        }
+
+        // Handle logout button click
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            sessionStorage.removeItem('loggedIn'); // Clear login state
+            window.location.href = 'accounts.html'; // Redirect to accounts page
+        });
+    </script>
+</body>
+</html>

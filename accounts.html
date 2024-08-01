@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Access</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+        .otp-section, .notification {
+            display: none;
+        }
+        .notification {
+            background-color: #28a745;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Login/Signup</h2>
+        <form id="authForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="example@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div class="otp-section" id="otpSection">
+            <h4>Enter OTP</h4>
+            <input type="text" class="form-control" id="otpInput" placeholder="Enter OTP">
+            <button id="verifyOtp" class="btn btn-success mt-2">Verify OTP</button>
+        </div>
+
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script>
+        // Hardcoded OTP
+        const hardcodedOtp = '123456';
+
+        // Handle form submission
+        document.getElementById('authForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Show OTP in notification
+            document.getElementById('notification').innerText = `Your OTP is: ${hardcodedOtp}`;
+            document.getElementById('notification').style.display = 'block';
+
+            // Show OTP section
+            document.getElementById('otpSection').style.display = 'block';
+        });
+
+        // Handle OTP verification
+        document.getElementById('verifyOtp').addEventListener('click', function() {
+            const otpInput = document.getElementById('otpInput').value;
+
+            if (otpInput === hardcodedOtp) {
+                // Show success notification
+                document.getElementById('notification').innerText = 'Success! You are now logged in.';
+                document.getElementById('notification').style.display = 'block';
+
+                // Store login state in sessionStorage
+                sessionStorage.setItem('loggedIn', 'true');
+
+                // Simulate redirect
+                setTimeout(function() {
+                    window.location.href = 'index.html'; // Redirect to homepage
+                }, 2000);
+            } else {
+                alert('Invalid OTP. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
+
